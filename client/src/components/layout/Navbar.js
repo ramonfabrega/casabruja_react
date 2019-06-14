@@ -8,6 +8,7 @@ const Nav = (auth, visible, onHide) => {
   return (
     <Sidebar
       as={Menu}
+      style={{ width: '22.4vh' }}
       animation='overlay'
       icon='labeled'
       direction='right'
@@ -30,7 +31,7 @@ const Navbar = ({ auth }) => {
         {Nav(auth, true, () => setVisible(true))}
       </Responsive>
       <Responsive maxWidth={767}>
-        <Menu icon fixed='right' vertical inverted>
+        <Menu icon fixed='right' vertical inverted style={{ width: '9vh' }}>
           <Menu.Item name='sidebar' onClick={() => setVisible(!visible)}>
             <Icon name='sidebar' />
           </Menu.Item>

@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Form, Grid, Header, Segment, Icon, Message } from 'semantic-ui-react';
+import {
+  Form,
+  Grid,
+  Header,
+  Segment,
+  Icon,
+  Message,
+  Divider,
+  Image
+} from 'semantic-ui-react';
 
 import { register } from '../store/actions/authActions';
+
+import header2 from '../../img/header2.png';
 
 class Register extends Component {
   constructor(props) {
@@ -36,15 +47,10 @@ class Register extends Component {
     const { firstName, lastName, email, password, password2 } = this.state;
 
     return (
-      <Grid
-        textAlign='center'
-        style={{ height: '100vh' }}
-        verticalAlign='middle'
-      >
+      <Grid textAlign='center' style={{ marginTop: '10px' }}>
         <Grid.Column style={{ maxWidth: 500 }}>
-          <Header as='h2' textAlign='center'>
-            <Icon name='beer' /> Casa Bruja
-          </Header>
+          <Image src={header2} />
+          <Divider />
           <Form size='large'>
             <Segment stacked>
               <Form.Group widths='equal'>

@@ -5,13 +5,15 @@ import { Link } from 'react-router-dom';
 import {
   Form,
   Grid,
-  Header,
   Segment,
-  Icon,
   Message,
   Button,
-  Modal
+  Modal,
+  Image,
+  Divider
 } from 'semantic-ui-react';
+
+import header2 from '../../img/header2.png';
 
 class Login extends Component {
   constructor(props) {
@@ -63,15 +65,14 @@ class Login extends Component {
     } = this.state;
 
     return (
-      <Grid
-        textAlign='center'
-        style={{ height: '100vh' }}
-        verticalAlign='middle'
-      >
+      <Grid textAlign='center' style={{ marginTop: '10px' }}>
         <Grid.Column style={{ maxWidth: 500 }}>
-          <Header as='h2' textAlign='center'>
+          {/* <Header as='h2' textAlign='center'>
             <Icon name='beer' /> Casa Bruja
-          </Header>
+          </Header> */}
+          {/* <Image src={header1} /> */}
+          <Image src={header2} />
+          <Divider />
           <Form size='large' error>
             <Segment stacked>
               <Form.Input
