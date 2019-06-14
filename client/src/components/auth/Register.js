@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Form, Grid, Header, Segment, Icon } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { Form, Grid, Header, Segment, Icon, Message } from 'semantic-ui-react';
 
-export default class Register extends Component {
+import { register } from '../store/actions/authActions';
+
+class Register extends Component {
   constructor(props) {
     super(props);
 
@@ -15,17 +17,19 @@ export default class Register extends Component {
     };
   }
 
+  // Redirect to home page if already logged in
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      if (this.props.auth.uid) this.props.history.push('/');
+    }
+  }
+
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
 
-  handleRegister = () => {
-    console.log(this.state);
-    this.setState({
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      password2: ''
-    });
+  handleRegister = e => {
+    e.preventDefault();
+
+    this.props.register(this.state);
   };
 
   render() {
@@ -87,6 +91,7 @@ export default class Register extends Component {
                 icon='unlock'
                 name='password2'
                 value={password2}
+                error={this.state.password !== this.state.password2}
                 onChange={this.handleChange}
                 iconPosition='left'
                 placeholder='Retype password'
@@ -95,17 +100,29 @@ export default class Register extends Component {
 
               <Form.Button
                 disabled={
-                  !(firstName && lastName && email && password && password2)
+                  !(
+                    firstName &&
+                    lastName &&
+                    email &&
+                    password &&
+                    password2 &&
+                    password === password2
+                  )
                 }
-                color='red'
+                positive
                 fluid
                 size='large'
                 onClick={this.handleRegister}
               >
                 Register
               </Form.Button>
+              {this.props.authError ? (
+                <Message negative content={this.props.authError} />
+              ) : (
+                <div />
+              )}
             </Segment>
-            <Segment stacked>
+            {/* <Segment stacked>
               <Form.Button color='facebook' fluid>
                 <Icon name='facebook' /> Login with Facebook
               </Form.Button>
@@ -115,10 +132,22 @@ export default class Register extends Component {
               <Form.Button color='instagram' fluid>
                 <Icon name='instagram' /> Login with Instagram
               </Form.Button>
-            </Segment>
+            </Segment> */}
           </Form>
         </Grid.Column>
       </Grid>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    authError: state.auth.authError,
+    auth: state.firebase.auth
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { register }
+)(Register);

@@ -1,26 +1,66 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { login, fbAuth, resetPassword } from '../store/actions/authActions';
 import { Link } from 'react-router-dom';
-import { Form, Grid, Header, Segment, Icon } from 'semantic-ui-react';
+import {
+  Form,
+  Grid,
+  Header,
+  Segment,
+  Icon,
+  Message,
+  Button,
+  Modal
+} from 'semantic-ui-react';
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      showModal: false,
+      resetEmail: '',
+      showModalMessage: false
     };
+  }
+
+  // Redirect to home page if already logged in
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      if (this.props.auth.uid) this.props.history.push('/');
+    }
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
 
   handleLogin = () => {
-    console.log(this.state);
+    this.props.login(this.state);
     this.setState({ password: '' });
   };
 
+  handleFacebook = () => {
+    this.props.fbAuth();
+  };
+
+  handleModalClose = () =>
+    this.setState({ showModal: false, showModalMessage: false });
+
+  handleResetPassword = () => {
+    // this.props.resetPassword(this.state.resetEmail);
+    console.log(this.state.resetEmail);
+    this.setState({ showModalMessage: true });
+  };
+
   render() {
-    const { email, password } = this.state;
+    const {
+      email,
+      password,
+      resetEmail,
+      showModal,
+      showModalMessage
+    } = this.state;
 
     return (
       <Grid
@@ -32,7 +72,7 @@ export default class Login extends Component {
           <Header as='h2' textAlign='center'>
             <Icon name='beer' /> Casa Bruja
           </Header>
-          <Form size='large'>
+          <Form size='large' error>
             <Segment stacked>
               <Form.Input
                 fluid
@@ -56,16 +96,85 @@ export default class Login extends Component {
 
               <Form.Button
                 disabled={!(email && password)}
-                color='red'
+                positive
                 fluid
                 size='large'
                 onClick={this.handleLogin}
               >
                 Login
               </Form.Button>
+              {this.props.authError ? (
+                <Message negative content={this.props.authError} />
+              ) : (
+                <div />
+              )}
+              <Grid columns='equal'>
+                <Grid.Column>
+                  <Button as={Link} to='/register' primary fluid>
+                    Register
+                  </Button>
+                </Grid.Column>
+                <Grid.Column>
+                  {/* <Button secondary fluid>
+                    Reset Password
+                  </Button> */}
+                  <Modal
+                    trigger={
+                      <Button
+                        secondary
+                        fluid
+                        onClick={() => this.setState({ showModal: true })}
+                      >
+                        Reset Password
+                      </Button>
+                    }
+                    size='mini'
+                    open={showModal}
+                    onClose={this.handleModalClose}
+                  >
+                    <Modal.Header>Reset Password</Modal.Header>
+                    <Modal.Content>
+                      <Form>
+                        <Form.Input
+                          label='Enter your email'
+                          value={resetEmail}
+                          name='resetEmail'
+                          onChange={this.handleChange}
+                        />
+                      </Form>
+                      {showModalMessage ? (
+                        <Message
+                          icon='mail'
+                          info
+                          content={`Reset email sent to: ${resetEmail}`}
+                        />
+                      ) : (
+                        <div />
+                      )}
+                    </Modal.Content>
+                    <Modal.Actions>
+                      <Button
+                        negative
+                        icon='close'
+                        labelPosition='right'
+                        content='Cancel'
+                        onClick={this.handleModalClose}
+                      />
+                      <Button
+                        positive
+                        icon='checkmark'
+                        labelPosition='right'
+                        content='Reset Password'
+                        onClick={this.handleResetPassword}
+                      />
+                    </Modal.Actions>
+                  </Modal>
+                </Grid.Column>
+              </Grid>
             </Segment>
-            <Segment stacked>
-              <Form.Button color='facebook' fluid>
+
+            {/* <Segment stacked>
+              <Form.Button color='facebook' fluid onClick={this.handleFacebook}>
                 <Icon name='facebook' /> Login with Facebook
               </Form.Button>
               <Form.Button color='google plus' fluid>
@@ -74,10 +183,20 @@ export default class Login extends Component {
               <Form.Button color='instagram' fluid>
                 <Icon name='instagram' /> Login with Instagram
               </Form.Button>
-            </Segment>
+            </Segment> */}
           </Form>
         </Grid.Column>
       </Grid>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  authError: state.auth.authError,
+  auth: state.firebase.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { login, fbAuth, resetPassword }
+)(Login);
