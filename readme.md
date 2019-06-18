@@ -15,6 +15,8 @@
 - `Profile.js`
   - Info Saved portal
   - Validation
+- `Product.js`
+  - move `sizes` to firebase / export them
 - `Cart.js`
 - `Subscriptions.js`
 - `PurchaseHistory.js`

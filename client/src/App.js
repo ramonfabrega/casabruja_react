@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './components/store/store';
@@ -29,7 +29,8 @@ const App = () => {
                 computer={14}
                 style={{ padding: 15, margin: 0, paddingLeft: 30 }}
               >
-                <Route exact path='/' component={ResponsiveLayout} />
+                <Route exact path='/' component={Dashboard} />
+                <Route exact path='/res' component={ResponsiveLayout} />
                 <Route path='/login' component={Login} />
                 <Route path='/register' component={Register} />
                 <Route path='/logout' component={Logout} />
