@@ -13,7 +13,6 @@
 - `Register.js`
   - Validation
 - `Profile.js`
-  - Info Saved portal
   - Validation
 - `Product.js`
   - move `sizes` to firebase / export them
@@ -29,6 +28,13 @@
     - Add images
   - QR code generation access
 - BG txid's
+
+---
+
+### Component Signatures
+
+- `const Product = ({ product, cart, updateProduct }) => <Card>`
+- `const Checkout = ({ cart, updateProduct }) => <Segment>`
 
 ---
 
