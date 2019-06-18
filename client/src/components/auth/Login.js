@@ -67,10 +67,6 @@ class Login extends Component {
     return (
       <Grid textAlign='center' style={{ marginTop: '10px' }}>
         <Grid.Column style={{ maxWidth: 500 }}>
-          {/* <Header as='h2' textAlign='center'>
-            <Icon name='beer' /> Casa Bruja
-          </Header> */}
-          {/* <Image src={header1} /> */}
           <Image src={header2} />
           <Divider />
           <Form size='large' error>
@@ -116,9 +112,6 @@ class Login extends Component {
                   </Button>
                 </Grid.Column>
                 <Grid.Column>
-                  {/* <Button secondary fluid>
-                    Reset Password
-                  </Button> */}
                   <Modal
                     trigger={
                       <Button

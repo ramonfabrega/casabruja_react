@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import {
   Form,
   Grid,
-  Header,
   Segment,
-  Icon,
   Message,
   Divider,
   Image
