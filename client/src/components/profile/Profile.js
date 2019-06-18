@@ -6,7 +6,8 @@ import {
   Header,
   Form,
   Divider,
-  Button
+  Button,
+  Popup
 } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -32,7 +33,8 @@ class Profile extends Component {
         name: ''
       },
       notes: '',
-      loaded: false
+      portalShow: false,
+      showPopup: false
     };
   }
 
@@ -45,11 +47,27 @@ class Profile extends Component {
         ...rest
       };
     }
+    return null;
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
 
   handleDate = birthdate => this.setState({ birthdate });
+
+  handlePortal = () => this.setState({ portalShow: !this.state.portalShow });
+
+  handlePopupOpen = () => {
+    this.setState({ showPopup: true });
+
+    this.timeout = setTimeout(() => {
+      this.setState({ showPopup: false });
+    }, 3000);
+  };
+
+  handlePopupClose = () => {
+    this.setState({ showPopup: false });
+    clearTimeout(this.timeout);
+  };
 
   onSuggestSelect = place => {
     const temp = {
@@ -66,6 +84,7 @@ class Profile extends Component {
   updateProfile = () => {
     // this.validateProfile();
     this.props.updateProfile(this.state, this.props.uid);
+    this.handlePopupOpen();
   };
 
   // validateProfile = () => {
@@ -81,9 +100,15 @@ class Profile extends Component {
             <Header as='h1' textAlign='center'>
               Account Information
             </Header>
-            <Button positive fluid onClick={this.updateProfile}>
-              Save Changes
-            </Button>
+            <Popup
+              trigger={<Button positive fluid content='Save Changes' />}
+              content={'Profile updated'}
+              on='click'
+              open={this.state.showPopup}
+              onClose={this.handlePopupClose}
+              onOpen={this.updateProfile}
+              position='right center'
+            />
 
             <Divider />
 
