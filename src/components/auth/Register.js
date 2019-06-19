@@ -11,7 +11,7 @@ import {
 
 import { register } from '../store/actions/authActions';
 
-import header2 from '../../img/header2.png';
+import light_header_clean from '../../img/transparent/logos/light_header_clean.png';
 
 class Register extends Component {
   constructor(props) {
@@ -45,12 +45,10 @@ class Register extends Component {
     const { firstName, lastName, email, password, password2 } = this.state;
 
     return (
-      <Grid textAlign='center' style={{ marginTop: '10px' }}>
-        <Grid.Column style={{ maxWidth: 500 }}>
-          <Image src={header2} />
-          <Divider />
-          <Form size='large'>
-            <Segment stacked>
+      <Grid.Row centered>
+        <Grid.Column computer={6} tablet={10} mobile={15}>
+          <Form size='large' inverted>
+            <Segment stacked inverted>
               <Form.Group widths='equal'>
                 <Form.Input
                   fluid
@@ -126,20 +124,9 @@ class Register extends Component {
                 <div />
               )}
             </Segment>
-            {/* <Segment stacked>
-              <Form.Button color='facebook' fluid>
-                <Icon name='facebook' /> Login with Facebook
-              </Form.Button>
-              <Form.Button color='google plus' fluid>
-                <Icon name='google plus' /> Login with Google
-              </Form.Button>
-              <Form.Button color='instagram' fluid>
-                <Icon name='instagram' /> Login with Instagram
-              </Form.Button>
-            </Segment> */}
           </Form>
         </Grid.Column>
-      </Grid>
+      </Grid.Row>
     );
   }
 }

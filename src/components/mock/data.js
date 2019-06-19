@@ -7,12 +7,14 @@ import chitra_1 from '../../img/products/chitra_1.jpg';
 import sandokan_1 from '../../img/products/sandokan_1.jpg';
 import gose_limon_1 from '../../img/products/gose_limon_1.jpg';
 
+import fula from '../../img/transparent/products/fula.png';
+
 export const products = [
   {
     name: 'Fula',
     style: 'Blonde Ale',
     price: 1.5,
-    image: fula_1,
+    image: fula,
     abv: 2.4,
     ibu: 24
   },
@@ -58,7 +60,7 @@ export const products = [
     ibu: 101
   },
   {
-    name: 'Gose',
+    name: 'Gose Limon Kaffir',
     style: 'Limon Kaffir',
     price: 3.0,
     image: gose_limon_1,

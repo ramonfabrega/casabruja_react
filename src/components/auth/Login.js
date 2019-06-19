@@ -13,7 +13,7 @@ import {
   Divider
 } from 'semantic-ui-react';
 
-import header2 from '../../img/header2.png';
+import light_header_clean from '../../img/transparent/logos/light_header_clean.png';
 
 class Login extends Component {
   constructor(props) {
@@ -65,14 +65,13 @@ class Login extends Component {
     } = this.state;
 
     return (
-      <Grid textAlign='center' style={{ marginTop: '10px' }}>
-        <Grid.Column style={{ maxWidth: 500 }}>
-          <Image src={header2} />
-          <Divider />
-          <Form size='large' error>
-            <Segment stacked>
+      <Grid.Row centered>
+        <Grid.Column computer={6} tablet={10} mobile={15}>
+          <Form size='large' inverted>
+            <Segment stacked inverted>
               <Form.Input
                 fluid
+                inverted
                 icon='mail'
                 name='email'
                 value={email}
@@ -82,6 +81,7 @@ class Login extends Component {
               />
               <Form.Input
                 fluid
+                inverted
                 icon='lock'
                 name='password'
                 value={password}
@@ -107,7 +107,7 @@ class Login extends Component {
               )}
               <Grid columns='equal'>
                 <Grid.Column>
-                  <Button as={Link} to='/register' primary fluid>
+                  <Button as={Link} to='/register' color='google plus' fluid>
                     Register
                   </Button>
                 </Grid.Column>
@@ -115,7 +115,8 @@ class Login extends Component {
                   <Modal
                     trigger={
                       <Button
-                        secondary
+                        // inverted
+                        primary
                         fluid
                         onClick={() => this.setState({ showModal: true })}
                       >
@@ -166,21 +167,9 @@ class Login extends Component {
                 </Grid.Column>
               </Grid>
             </Segment>
-
-            {/* <Segment stacked>
-              <Form.Button color='facebook' fluid onClick={this.handleFacebook}>
-                <Icon name='facebook' /> Login with Facebook
-              </Form.Button>
-              <Form.Button color='google plus' fluid>
-                <Icon name='google plus' /> Login with Google
-              </Form.Button>
-              <Form.Button color='instagram' fluid>
-                <Icon name='instagram' /> Login with Instagram
-              </Form.Button>
-            </Segment> */}
           </Form>
         </Grid.Column>
-      </Grid>
+      </Grid.Row>
     );
   }
 }

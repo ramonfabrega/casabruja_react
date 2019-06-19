@@ -22,29 +22,15 @@ const App = () => {
       <Provider store={store}>
         <Router>
           <Grid>
-            <Grid.Row>
-              <Grid.Column
-                mobile={14}
-                tablet={13}
-                computer={14}
-                style={{ padding: 15, margin: 0, paddingLeft: 30 }}
-              >
-                <Route exact path='/' component={Dashboard} />
-                <Route exact path='/res' component={ResponsiveLayout} />
-                <Route path='/login' component={Login} />
-                <Route path='/register' component={Register} />
-                <Route path='/logout' component={Logout} />
-                <PrivateRoute path='/profile' component={Profile} />
-              </Grid.Column>
-              <Grid.Column
-                mobile={2}
-                tablet={3}
-                computer={2}
-                style={{ padding: 0, margin: 0 }}
-              >
-                <Navbar />
-              </Grid.Column>
+            <Grid.Row style={{ padding: 25 }}>
+              <Navbar />
             </Grid.Row>
+            <Route exact path='/' component={Dashboard} />
+            <Route exact path='/res' component={ResponsiveLayout} />
+            <Route path='/login' component={Login} />
+            <Route path='/register' component={Register} />
+            <Route path='/logout' component={Logout} />
+            <PrivateRoute path='/profile' component={Profile} />
           </Grid>
         </Router>
       </Provider>

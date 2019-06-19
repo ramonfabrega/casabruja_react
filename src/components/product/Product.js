@@ -57,7 +57,7 @@ const Product = ({ product, cart, updateProduct }) => {
   };
 
   return (
-    <Card>
+    <Card centered color='violet'>
       <Image src={product.image} wrapped size='tiny' centered />
       <Card.Content style={{ paddingRight: 5 }}>
         <Card.Header>{product.name}</Card.Header>

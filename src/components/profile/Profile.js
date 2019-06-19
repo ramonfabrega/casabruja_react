@@ -94,9 +94,9 @@ class Profile extends Component {
 
   render() {
     return (
-      <Grid centered style={{ marginTop: 10 }}>
+      <Grid.Row centered style={{ paddingTop: 0 }}>
         <Grid.Column mobile={14} tablet={14} computer={10}>
-          <Segment>
+          <Segment style={{ transparecy: 0.5 }}>
             <Header as='h1' textAlign='center'>
               Account Information
             </Header>
@@ -189,7 +189,7 @@ class Profile extends Component {
             </Form>
           </Segment>
         </Grid.Column>
-      </Grid>
+      </Grid.Row>
     );
   }
 }
