@@ -1,4 +1,8 @@
-import { UPDATE_PRODUCT, REMOVE_PRODUCT } from '../actions/types';
+import {
+  UPDATE_PRODUCT,
+  REMOVE_PRODUCT,
+  GET_PRODUCT_INFO
+} from '../actions/types';
 
 const initialState = {
   cart: {}
@@ -6,6 +10,14 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case GET_PRODUCT_INFO:
+      console.log(action);
+      return {
+        ...state,
+        cart: {
+          // [action.payload.product]:
+        }
+      };
     case UPDATE_PRODUCT:
       return {
         ...state,

@@ -110,7 +110,6 @@ export const updateProfile = (profile, uid) => (
   { getFirestore }
 ) => {
   const firestore = getFirestore();
-  console.log(profile, uid);
 
   const { isEmpty, isLoaded, ...rest } = profile;
 
