@@ -7,10 +7,12 @@ import {
   Button,
   Label,
   Form,
-  Icon
+  Icon,
+  Segment
 } from 'semantic-ui-react';
 
 import { updateProduct } from '../store/actions/productActions';
+import replacePathSepForGlob from 'jest-util/build/replacePathSepForGlob';
 
 const sizes = [
   {
@@ -57,7 +59,7 @@ const Product = ({ product, cart, updateProduct }) => {
   };
 
   return (
-    <Card centered color='violet'>
+    <Card as={Segment} color='red' centered>
       <Image src={product.image} wrapped size='tiny' centered />
       <Card.Content style={{ paddingRight: 5 }}>
         <Card.Header>{product.name}</Card.Header>
