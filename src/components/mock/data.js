@@ -1,13 +1,11 @@
-import fula_1 from '../../img/products/fula_1.jpg';
-import chivo_1 from '../../img/products/chivo_1.jpg';
-import sirfrancis_1 from '../../img/products/sirfrancis_1.jpg';
-import tulivieja_1 from '../../img/products/tulivieja_1.jpg';
-import ttt_1 from '../../img/products/ttt_1.jpg';
-import chitra_1 from '../../img/products/chitra_1.jpg';
-import sandokan_1 from '../../img/products/sandokan_1.jpg';
-import gose_limon_1 from '../../img/products/gose_limon_1.jpg';
-
 import fula from '../../img/transparent/products/fula.png';
+import chivo from '../../img/transparent/products/chivo.png';
+import ttt from '../../img/transparent/products/ttt.png';
+import chitra from '../../img/transparent/products/chitra.png';
+import sir from '../../img/transparent/products/sir.png';
+import tuli from '../../img/transparent/products/tuli.png';
+import sandokan from '../../img/transparent/products/sandokan.png';
+import gose_limon from '../../img/transparent/products/gose_limon.png';
 
 export const products = [
   {
@@ -22,7 +20,7 @@ export const products = [
     name: 'Tres Tristes Tigres',
     style: 'Witbier',
     price: 2.0,
-    image: ttt_1,
+    image: ttt,
     abv: 4.6,
     ibu: ''
   },
@@ -30,7 +28,7 @@ export const products = [
     name: 'Chivoperro',
     style: 'India Pale Ale',
     price: 2,
-    image: chivo_1,
+    image: chivo,
     abv: 6.1,
     ibu: 49
   },
@@ -38,7 +36,7 @@ export const products = [
     name: 'Chitra',
     style: 'Pale Ale',
     price: 3.0,
-    image: chitra_1,
+    image: chitra,
     abv: '',
     ibu: ''
   },
@@ -46,7 +44,7 @@ export const products = [
     name: 'Sir Francis',
     style: 'Red Ale',
     price: 2.5,
-    image: sirfrancis_1,
+    image: sir,
     abv: 5.5,
     ibu: 26
   },
@@ -55,7 +53,7 @@ export const products = [
     name: 'Tulivieja',
     style: 'Imperial India Pale Ale',
     price: 3.0,
-    image: tulivieja_1,
+    image: tuli,
     abv: 8.4,
     ibu: 101
   },
@@ -63,7 +61,7 @@ export const products = [
     name: 'Gose Limon Kaffir',
     style: 'Limon Kaffir',
     price: 3.0,
-    image: gose_limon_1,
+    image: gose_limon,
     abv: '',
     ibu: ''
   },
@@ -71,7 +69,7 @@ export const products = [
     name: 'Sandokan',
     style: 'New England IPA',
     price: 3.0,
-    image: sandokan_1,
+    image: sandokan,
     abv: 8.4,
     ibu: 101
   }
