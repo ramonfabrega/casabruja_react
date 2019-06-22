@@ -12,3 +12,5 @@ export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 export const GET_PRODUCT_INFO = 'GET_PRODUCT_INFO';
 export const GET_IMAGE = 'GET_IMAGE';
+
+export const GET_PRODUCTS = 'GET_PRODUCTS';
