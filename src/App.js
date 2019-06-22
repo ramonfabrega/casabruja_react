@@ -13,8 +13,13 @@ import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import Register from './components/auth/Register';
 import Profile from './components/profile/Profile';
+import Checkout from './components/product/Checkout';
+
+import { getProductData } from './components/store/actions/productActions';
 
 import ResponsiveLayout from './components/common/ResponsiveLayout';
+
+store.dispatch(getProductData());
 
 const App = () => {
   return (
@@ -25,12 +30,15 @@ const App = () => {
             <Grid.Row style={{ padding: 25 }}>
               <Navbar />
             </Grid.Row>
-            <Route exact path='/' component={Dashboard} />
-            <Route exact path='/res' component={ResponsiveLayout} />
+            <PrivateRoute exact path='/' component={Dashboard} />
+            <PrivateRoute path='/profile' component={Profile} />
+            <PrivateRoute exact path='/checkout' component={Checkout} />
+
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
             <Route path='/logout' component={Logout} />
-            <PrivateRoute path='/profile' component={Profile} />
+
+            <Route exact path='/res' component={ResponsiveLayout} />
           </Grid>
         </Router>
       </Provider>
