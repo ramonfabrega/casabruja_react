@@ -16,7 +16,7 @@ import Register from './components/auth/Register';
 
 import Profile from './components/profile/Profile';
 import Dashboard from './components/dashboard/Dashboard';
-import Checkout from './components/product/Checkout';
+import Checkout from './components/payment/Checkout';
 
 import { getProductData } from './components/store/actions/productActions';
 
