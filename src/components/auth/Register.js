@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  Form,
-  Grid,
-  Segment,
-  Message,
-  Divider,
-  Image
-} from 'semantic-ui-react';
+import { Form, Grid, Segment, Message } from 'semantic-ui-react';
 
 import { register } from '../store/actions/authActions';
-
-import light_header_clean from '../../img/transparent/logos/light_header_clean.png';
 
 class Register extends Component {
   constructor(props) {

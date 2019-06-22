@@ -1,14 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Segment, Button, Label, Icon, Table, Grid } from 'semantic-ui-react';
+import { Button, Label, Icon, Grid } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
-import {
-  updateProduct,
-  getProductPrice
-} from '../store/actions/productActions';
-import { products } from '../mock/data';
+import { updateProduct } from '../store/actions/productActions';
+// import { products } from '../mock/data';
 
-const Checkout = ({ cart, updateProduct, getProductPrice }) => {
+const Checkout = ({ cart, products, updateProduct }) => {
   let total = 0;
   let count = 0;
 
@@ -110,7 +108,7 @@ const Checkout = ({ cart, updateProduct, getProductPrice }) => {
       <Grid>
         <Grid.Column computer={10} mobile={16} tablet={8}>
           <Button as='div' labelPosition='right' fluid>
-            <Button animated positive fluid onClick={() => console.log(cart)}>
+            <Button as={Link} to='/checkout' animated positive fluid>
               <Button.Content visible>
                 <Icon name='cart' />
                 {`Buy ${count} Beers`}
@@ -138,10 +136,11 @@ const Checkout = ({ cart, updateProduct, getProductPrice }) => {
 };
 
 const mapStateToProps = state => ({
-  cart: state.product.cart
+  cart: state.product.cart,
+  products: state.product.products
 });
 
 export default connect(
   mapStateToProps,
-  { updateProduct, getProductPrice }
+  { updateProduct }
 )(Checkout);

@@ -2,18 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { login, fbAuth, resetPassword } from '../store/actions/authActions';
 import { Link } from 'react-router-dom';
-import {
-  Form,
-  Grid,
-  Segment,
-  Message,
-  Button,
-  Modal,
-  Image,
-  Divider
-} from 'semantic-ui-react';
-
-import light_header_clean from '../../img/transparent/logos/light_header_clean.png';
+import { Form, Grid, Segment, Message, Button, Modal } from 'semantic-ui-react';
 
 class Login extends Component {
   constructor(props) {
