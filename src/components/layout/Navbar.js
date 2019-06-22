@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Menu, Sidebar, Button, Grid, Image } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import NavLinks from './NavLinks';
 
@@ -34,7 +35,7 @@ const Navbar = ({ auth }) => {
       <Grid.Column computer={4} tablet={2} mobile={4} />
       {window.innerWidth >= 500 && (
         <Grid.Column computer={8} tablet={12}>
-          <Image src={light_header_clean} />
+          <Image as={Link} to='/' src={light_header_clean} />
         </Grid.Column>
       )}
       <Grid.Column computer={4} tablet={2} mobile={12}>

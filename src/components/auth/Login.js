@@ -104,7 +104,6 @@ class Login extends Component {
                   <Modal
                     trigger={
                       <Button
-                        // inverted
                         primary
                         fluid
                         onClick={() => this.setState({ showModal: true })}
