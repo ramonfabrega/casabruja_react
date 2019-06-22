@@ -1,1 +1,2 @@
-@pageBackground: @black;
+@pageBackground: #2d2f30;
+@red: #dd4b39;
