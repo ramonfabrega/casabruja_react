@@ -5,8 +5,13 @@ const Footer = () => {
   return (
     <Grid.Row>
       <Grid.Column floated='right' textAlign='right'>
-        {/* <Header content='Made by Ramon Fabrega' sub inverted /> */}
-        <Header sub inverted style={{ opacity: 0.2, marginRight: 25 }}>
+        <Header
+          as='a'
+          href='http://www.ramonfabrega.com/'
+          sub
+          inverted
+          style={{ opacity: 0.2, marginRight: 25 }}
+        >
           Copyright &copy; {new Date().getFullYear()} Ramon Fabrega
         </Header>
       </Grid.Column>
