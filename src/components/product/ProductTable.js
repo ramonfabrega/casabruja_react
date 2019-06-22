@@ -42,12 +42,22 @@ const Row = ({ product, amount, f }) => {
 const ProductTable = ({ cart, products, f }) => {
   const headers = ['', 'Price', 'Quantity', 'Total'];
   return (
-    <Table compact size='small' striped definition unstackable singleLine>
+    <Table
+      compact
+      size='small'
+      striped
+      definition
+      unstackable
+      singleLine
+      inverted
+    >
       <Table.Header>
         <Table.Row textAlign='center'>
           {headers.map((h, i) => (
             <Table.Cell key={i}>
-              <Header sub>{h}</Header>
+              <Header sub inverted>
+                {h}
+              </Header>
             </Table.Cell>
           ))}
         </Table.Row>

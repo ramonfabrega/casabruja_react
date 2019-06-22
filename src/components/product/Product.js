@@ -31,6 +31,12 @@ const sizes = [
   }
 ];
 
+const colors = {
+  header: { color: 'hsla(0, 4%, 95%, 1)' },
+  meta: { color: 'hsla(0, 4%, 95%, 0.5)' },
+  extra: { color: 'hsla(0, 4%, 95%, 0.2)' }
+};
+
 const Product = ({ product, cart, updateProduct }) => {
   const [value, setValue] = useState(sizes[0].value);
   const [quantity, setQuantity] = useState(0);
@@ -58,17 +64,11 @@ const Product = ({ product, cart, updateProduct }) => {
   };
 
   return (
-    <Card as={Segment} centered>
+    <Card as={Segment} centered inverted>
       <Image src={product.image} wrapped size='tiny' centered />
-      {/* <Image
-        src='/static/media/fula.a4243a05.png'
-        wrapped
-        size='tiny'
-        centered
-      /> */}
       <Card.Content style={{ paddingRight: 5 }}>
-        <Card.Header>{product.name}</Card.Header>
-        <Card.Meta>{product.style}</Card.Meta>
+        <Card.Header style={colors.header}>{product.name}</Card.Header>
+        <Card.Meta style={colors.meta}>{product.style}</Card.Meta>
         <Card.Description>
           <Form size='mini'>
             <Form.Group widths='equal'>
@@ -79,7 +79,9 @@ const Product = ({ product, cart, updateProduct }) => {
                     negative
                     onClick={() => quantityHandler(-1)}
                   />
-                  <Button>{quantity}</Button>
+                  <Button circular color='black'>
+                    {quantity}
+                  </Button>
                   <Button
                     icon='plus'
                     positive
@@ -98,8 +100,8 @@ const Product = ({ product, cart, updateProduct }) => {
 
           {beers > 0 ? (
             <Button as='div' labelPosition='right' fluid>
-              <Button secondary icon='cart' fluid content={`${beers} Beers`} />
-              <Label basic color='black' pointing='left'>
+              <Button primary icon='cart' fluid content={`${beers} Beers`} />
+              <Label basic color='blue' pointing='left'>
                 <Icon name='dollar' />
                 {product.price * beers}
               </Label>
@@ -116,8 +118,12 @@ const Product = ({ product, cart, updateProduct }) => {
       </Card.Content>
       <Card.Content extra>
         <Grid columns={2}>
-          <Grid.Column>{`${product.abv}% ABV`}</Grid.Column>
-          <Grid.Column textAlign='right'>{`${product.ibu} IBU`}</Grid.Column>
+          <Grid.Column style={colors.extra}>
+            {`${product.abv}% ABV`}
+          </Grid.Column>
+          <Grid.Column textAlign='right' style={colors.extra}>
+            {`${product.ibu} IBU`}
+          </Grid.Column>
         </Grid>
       </Card.Content>
     </Card>

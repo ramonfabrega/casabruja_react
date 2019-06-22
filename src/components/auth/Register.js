@@ -39,82 +39,82 @@ class Register extends Component {
       <Grid.Row centered>
         <Grid.Column computer={6} tablet={10} mobile={15}>
           <Form size='large' inverted>
-            <Segment stacked inverted>
-              <Form.Group widths='equal'>
-                <Form.Input
-                  fluid
-                  icon='user'
-                  name='firstName'
-                  value={firstName}
-                  onChange={this.handleChange}
-                  iconPosition='left'
-                  placeholder='First name'
-                />
-                <Form.Input
-                  fluid
-                  icon='user'
-                  name='lastName'
-                  value={lastName}
-                  onChange={this.handleChange}
-                  iconPosition='left'
-                  placeholder='Last Name'
-                />
-              </Form.Group>
+            {/* <Segment stacked inverted> */}
+            <Form.Group widths='equal'>
               <Form.Input
                 fluid
-                icon='mail'
-                name='email'
-                value={email}
+                icon='user'
+                name='firstName'
+                value={firstName}
                 onChange={this.handleChange}
                 iconPosition='left'
-                placeholder='E-mail address'
+                placeholder='First name'
               />
               <Form.Input
                 fluid
-                icon='lock'
-                name='password'
-                value={password}
+                icon='user'
+                name='lastName'
+                value={lastName}
                 onChange={this.handleChange}
                 iconPosition='left'
-                placeholder='Password'
-                type='password'
+                placeholder='Last Name'
               />
-              <Form.Input
-                fluid
-                icon='unlock'
-                name='password2'
-                value={password2}
-                error={this.state.password !== this.state.password2}
-                onChange={this.handleChange}
-                iconPosition='left'
-                placeholder='Retype password'
-                type='password'
-              />
+            </Form.Group>
+            <Form.Input
+              fluid
+              icon='mail'
+              name='email'
+              value={email}
+              onChange={this.handleChange}
+              iconPosition='left'
+              placeholder='E-mail address'
+            />
+            <Form.Input
+              fluid
+              icon='lock'
+              name='password'
+              value={password}
+              onChange={this.handleChange}
+              iconPosition='left'
+              placeholder='Password'
+              type='password'
+            />
+            <Form.Input
+              fluid
+              icon='unlock'
+              name='password2'
+              value={password2}
+              error={this.state.password !== this.state.password2}
+              onChange={this.handleChange}
+              iconPosition='left'
+              placeholder='Retype password'
+              type='password'
+            />
 
-              <Form.Button
-                disabled={
-                  !(
-                    firstName &&
-                    lastName &&
-                    email &&
-                    password &&
-                    password2 &&
-                    password === password2
-                  )
-                }
-                positive
-                fluid
-                size='large'
-                onClick={this.handleRegister}
-              >
-                Register
-              </Form.Button>
-              {this.props.authError ? (
-                <Message negative content={this.props.authError} />
-              ) : (
-                <div />
-              )}
-            </Segment>
+            <Form.Button
+              disabled={
+                !(
+                  firstName &&
+                  lastName &&
+                  email &&
+                  password &&
+                  password2 &&
+                  password === password2
+                )
+              }
+              positive
+              fluid
+              size='large'
+              onClick={this.handleRegister}
+            >
+              Register
+            </Form.Button>
+            {this.props.authError ? (
+              <Message negative content={this.props.authError} />
+            ) : (
+              <div />
+            )}
+            {/* </Segment> */}
           </Form>
         </Grid.Column>
       </Grid.Row>

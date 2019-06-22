@@ -57,104 +57,105 @@ class Login extends Component {
       <Grid.Row centered>
         <Grid.Column computer={6} tablet={10} mobile={15}>
           <Form size='large' inverted>
-            <Segment stacked inverted>
-              <Form.Input
-                fluid
-                inverted
-                icon='mail'
-                name='email'
-                value={email}
-                onChange={this.handleChange}
-                iconPosition='left'
-                placeholder='E-mail address'
-              />
-              <Form.Input
-                fluid
-                inverted
-                icon='lock'
-                name='password'
-                value={password}
-                onChange={this.handleChange}
-                iconPosition='left'
-                placeholder='Password'
-                type='password'
-              />
+            {/* <Segment stacked inverted> */}
+            <Form.Input
+              fluid
+              inverted
+              icon='mail'
+              name='email'
+              value={email}
+              onChange={this.handleChange}
+              iconPosition='left'
+              placeholder='E-mail address'
+            />
+            <Form.Input
+              fluid
+              inverted
+              icon='lock'
+              name='password'
+              value={password}
+              onChange={this.handleChange}
+              iconPosition='left'
+              placeholder='Password'
+              type='password'
+            />
 
-              <Form.Button
-                disabled={!(email && password)}
-                positive
-                fluid
-                size='large'
-                onClick={this.handleLogin}
-              >
-                Login
-              </Form.Button>
-              {this.props.authError ? (
-                <Message negative content={this.props.authError} />
-              ) : (
-                <div />
-              )}
-              <Grid columns='equal'>
-                <Grid.Column>
-                  <Button as={Link} to='/register' color='google plus' fluid>
-                    Register
-                  </Button>
-                </Grid.Column>
-                <Grid.Column>
-                  <Modal
-                    trigger={
-                      <Button
-                        primary
-                        fluid
-                        onClick={() => this.setState({ showModal: true })}
-                      >
-                        Reset Password
-                      </Button>
-                    }
-                    size='mini'
-                    open={showModal}
-                    onClose={this.handleModalClose}
-                  >
-                    <Modal.Header>Reset Password</Modal.Header>
-                    <Modal.Content>
-                      <Form>
-                        <Form.Input
-                          label='Enter your email'
-                          value={resetEmail}
-                          name='resetEmail'
-                          onChange={this.handleChange}
-                        />
-                      </Form>
-                      {showModalMessage ? (
-                        <Message
-                          icon='mail'
-                          info
-                          content={`Reset email sent to: ${resetEmail}`}
-                        />
-                      ) : (
-                        <div />
-                      )}
-                    </Modal.Content>
-                    <Modal.Actions>
-                      <Button
-                        negative
-                        icon='close'
-                        labelPosition='right'
-                        content='Cancel'
-                        onClick={this.handleModalClose}
+            <Form.Button
+              disabled={!(email && password.length >= 6)}
+              positive
+              fluid
+              size='large'
+              onClick={this.handleLogin}
+            >
+              Login
+            </Form.Button>
+            {this.props.authError ? (
+              <Message negative content={this.props.authError} />
+            ) : (
+              <div />
+            )}
+            <Grid columns='equal'>
+              <Grid.Column>
+                <Button as={Link} to='/register' primary fluid>
+                  Register
+                </Button>
+              </Grid.Column>
+              <Grid.Column>
+                <Modal
+                  trigger={
+                    <Button
+                      secondary
+                      inverted
+                      fluid
+                      onClick={() => this.setState({ showModal: true })}
+                    >
+                      Forgot your password?
+                    </Button>
+                  }
+                  size='mini'
+                  open={showModal}
+                  onClose={this.handleModalClose}
+                >
+                  <Modal.Header>Reset Your Password</Modal.Header>
+                  <Modal.Content>
+                    <Form>
+                      <Form.Input
+                        label='Enter your email'
+                        value={resetEmail}
+                        name='resetEmail'
+                        onChange={this.handleChange}
                       />
-                      <Button
-                        positive
-                        icon='checkmark'
-                        labelPosition='right'
-                        content='Reset Password'
-                        onClick={this.handleResetPassword}
+                    </Form>
+                    {showModalMessage ? (
+                      <Message
+                        icon='mail'
+                        info
+                        content={`Reset email sent to: ${resetEmail}`}
                       />
-                    </Modal.Actions>
-                  </Modal>
-                </Grid.Column>
-              </Grid>
-            </Segment>
+                    ) : (
+                      <div />
+                    )}
+                  </Modal.Content>
+                  <Modal.Actions>
+                    <Button
+                      negative
+                      icon='close'
+                      labelPosition='right'
+                      content='Cancel'
+                      onClick={this.handleModalClose}
+                    />
+                    <Button
+                      positive
+                      icon='checkmark'
+                      labelPosition='right'
+                      content='Reset Password'
+                      onClick={this.handleResetPassword}
+                    />
+                  </Modal.Actions>
+                </Modal>
+              </Grid.Column>
+            </Grid>
+            {/* </Segment> */}
           </Form>
         </Grid.Column>
       </Grid.Row>

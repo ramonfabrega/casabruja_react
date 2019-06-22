@@ -14,12 +14,12 @@ import {
 import Product from './Product';
 import ProductTable from './ProductTable';
 
-const mockCart = {
-  Chitra: 24,
-  Chivoperro: 12,
-  Fula: 48,
-  Tulivieja: 6
-};
+// const mockCart = {
+//   Chitra: 24,
+//   Chivoperro: 12,
+//   Fula: 48,
+//   Tulivieja: 6
+// };
 
 const Checkout = ({ cart, products }) => {
   const [showModal, setModal] = useState(false);
@@ -53,7 +53,7 @@ const Checkout = ({ cart, products }) => {
       return (
         <Grid.Row centered>
           <Grid.Column computer={6} tablet={8} mobile={12}>
-            <Segment placeholder>
+            <Segment placeholder inverted>
               <Header icon>
                 <Icon name='hand paper outline' />
                 Your cart is empty. Please add some items.

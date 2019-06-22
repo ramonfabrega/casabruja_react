@@ -54,7 +54,7 @@ const BuyNow = ({ cart, products }) => {
             </Label>
           </Button>
         </Grid.Column>
-        <Grid.Column computer={6} mobile={16} tablet={8}>
+        <Grid.Column computer={6} mobile={16} tablet={6}>
           <Button animated primary fluid onClick={() => console.log(cart)}>
             <Button.Content visible>Subscribe</Button.Content>
             <Button.Content hidden>More Info...</Button.Content>

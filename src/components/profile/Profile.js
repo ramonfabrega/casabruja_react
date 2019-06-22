@@ -96,7 +96,7 @@ class Profile extends Component {
     return (
       <Grid.Row centered style={{ paddingTop: 0 }}>
         <Grid.Column mobile={14} tablet={14} computer={10}>
-          <Segment style={{ transparecy: 0.5 }}>
+          <Segment inverted>
             <Header as='h1' textAlign='center'>
               Account Information
             </Header>
@@ -112,7 +112,7 @@ class Profile extends Component {
 
             <Divider />
 
-            <Form size='small'>
+            <Form size='small' inverted>
               <Form.Group widths='equal'>
                 <Form.Input
                   icon='user'
