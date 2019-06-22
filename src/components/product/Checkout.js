@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   Grid,
-  Table,
   Icon,
   Header,
-  Image,
   Modal,
-  Loader
+  Loader,
+  Segment,
+  Button
 } from 'semantic-ui-react';
-import fula from '../../img/badges/fula.png';
-import chitra from '../../img/transparent/products/chitra.png';
-import Product from './Product';
 
+import Product from './Product';
 import ProductTable from './ProductTable';
 
 const mockCart = {
@@ -51,7 +50,21 @@ const Checkout = ({ cart, products }) => {
         </Grid.Row>
       );
     } else {
-      return <Header size='huge' inverted content='Add items to cart' />;
+      return (
+        <Grid.Row centered>
+          <Grid.Column computer={6} tablet={8} mobile={12}>
+            <Segment placeholder>
+              <Header icon>
+                <Icon name='hand paper outline' />
+                Your cart is empty. Please add some items.
+              </Header>
+              <Button as={Link} to='/' primary style={{ marginTop: 10 }}>
+                Go Shopping
+              </Button>
+            </Segment>
+          </Grid.Column>
+        </Grid.Row>
+      );
     }
   } else {
     return <Loader active />;
