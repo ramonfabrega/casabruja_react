@@ -1,83 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Segment, Table, Icon } from 'semantic-ui-react';
+import {
+  Grid,
+  Table,
+  Icon,
+  Header,
+  Image,
+  Modal,
+  Loader
+} from 'semantic-ui-react';
+import fula from '../../img/badges/fula.png';
+import chitra from '../../img/transparent/products/chitra.png';
+import Product from './Product';
 
-// {Object.entries(cart).map(([key, value], i) => {
-//     if (value > 0) {
-//       const product = products.find(tgt => tgt.name === key);
-//       // getProductPrice(key);
-//       return (
-//         <Table.Row key={i}>
-//           <Table.Cell>{key}</Table.Cell>
-//           <Table.Cell>{`${value} Beers`}</Table.Cell>
-//           <Table.Cell>
-//             <Icon name='dollar' color='green' />
-//             {value * product.price}
-//           </Table.Cell>
-// <Table.Cell width={1}>
-//   <Icon
-//     name='cancel'
-//     color='red'
-//     onClick={() =>
-//       updateProduct({ product: key, quantity: 0 })
-//     }
-//   />
-// </Table.Cell>
-//         </Table.Row>
-//       );
-//     }
-//   })}
+import ProductTable from './ProductTable';
+
+const mockCart = {
+  Chitra: 24,
+  Chivoperro: 12,
+  Fula: 48,
+  Tulivieja: 6
+};
 
 const Checkout = ({ cart, products }) => {
-  const tableCells = Object.entries(cart).map(([key, value], i) => {
-    if (value > 0) {
-      const product = products.find(tgt => tgt.name === key);
+  const [showModal, setModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  if (products) {
+    if (Object.keys(cart).length) {
       return (
-        <Table.Row key={i}>
-          <Table.Cell>{key}</Table.Cell>
-          <Table.Cell>{product.price}</Table.Cell>
-          <Table.Cell>{`${value} Beers`}</Table.Cell>
-          <Table.Cell>
-            <Icon name='dollar' color='green' />
-            {value * product.price}
-          </Table.Cell>
-          {/* <Table.Cell width={1}>
-            <Icon
-              name='cancel'
-              color='red'
-              onClick={() =>
-                // updateProduct({ product: key, quantity: 0 })
-                console.log('delete onClick - IMPORT ACTIONS')
-              }
+        <Grid.Row centered>
+          <Grid.Column computer={8} tablet={12} mobile={15}>
+            <Header size='huge' inverted content='Order Summary' />
+            <ProductTable
+              cart={cart}
+              products={products}
+              f={{ setModal, setSelectedProduct }}
             />
-          </Table.Cell> */}
-        </Table.Row>
+            <Modal
+              open={showModal}
+              onClose={() => setModal(false)}
+              closeIcon
+              size='mini'
+            >
+              <Modal.Content>
+                <Product product={selectedProduct} />
+              </Modal.Content>
+            </Modal>
+          </Grid.Column>
+        </Grid.Row>
       );
     } else {
-      return <div />;
+      return <Header size='huge' inverted content='Add items to cart' />;
     }
-  });
-
-  console.log(cart, products);
-  return (
-    <Grid.Row centered>
-      <Grid.Column computer={8}>
-        <Segment>
-          <Table>
-            <Table.Header>
-              <Table.Row>
-                <Table.Cell />
-                <Table.Cell>Price</Table.Cell>
-                <Table.Cell>Quantity</Table.Cell>
-                <Table.Cell>Total</Table.Cell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>{tableCells}</Table.Body>
-          </Table>
-        </Segment>
-      </Grid.Column>
-    </Grid.Row>
-  );
+  } else {
+    return <Loader active />;
+  }
 };
 
 const mapStateToProps = state => ({
