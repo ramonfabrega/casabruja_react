@@ -19,30 +19,6 @@ export const removeProduct = product => dispatch => {
   });
 };
 
-// export const getProductPrice = product => (
-//   dispatch,
-//   getState,
-//   { getFirestore }
-// ) => {
-//   const firestore = getFirestore();
-
-//   const productRef = firestore.collection('products').doc(product);
-
-//   let getDoc = productRef
-//     .get()
-//     .then(doc => {
-//       dispatch({
-//         type: GET_PRODUCT_INFO,
-//         payload: doc.data()
-//       });
-//     })
-//     .catch(err => console.log(err));
-
-//   // firestore
-//   //   .collection('products')
-//   //   .doc(product);
-// };
-
 export const getProductData = () => (dispatch, getState, { getFirestore }) => {
   const firestore = getFirestore();
 

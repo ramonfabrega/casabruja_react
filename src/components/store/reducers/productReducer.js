@@ -26,13 +26,19 @@ export default (state = initialState, action) => {
         }
       };
     case UPDATE_PRODUCT:
-      return {
+      const newState = {
         ...state,
         cart: {
           ...state.cart,
           [action.payload.product]: action.payload.quantity
         }
       };
+
+      if (action.payload.quantity === 0)
+        delete newState.cart[action.payload.product];
+
+      return newState;
+
     case REMOVE_PRODUCT:
       return {
         ...state,
