@@ -5,8 +5,6 @@
 
 ### TODO:
 
-- `Navbar.js`
-  - Optimize burger menu: [react-burger-menu](https://negomi.github.io/react-burger-menu/)
 - `Login.js`
   - Password Reset modal message
   - Validation
@@ -14,9 +12,6 @@
   - Validation
 - `Profile.js`
   - Validation
-- `Product.js`
-  - move `sizes` to firebase / export them
-- `Cart.js`
 - `Subscriptions.js`
 - `PurchaseHistory.js`
 - `Rewards.js`
