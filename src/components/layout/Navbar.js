@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import {
-  Menu,
-  Sidebar,
-  Responsive,
-  Icon,
-  Button,
-  Grid,
-  Image
-} from 'semantic-ui-react';
+import { Menu, Sidebar, Button, Grid, Image } from 'semantic-ui-react';
 
 import NavLinks from './NavLinks';
 
 import light_header_clean from '../../img/transparent/logos/light_header_clean.png';
+// import dark_header_clean from '../../img/transparent/logos/dark_header_clean.png';
 
 const Nav = (auth, visible, onHide) => {
   return (
@@ -35,10 +28,6 @@ const Nav = (auth, visible, onHide) => {
 
 const Navbar = ({ auth }) => {
   const [visible, setVisible] = useState(false);
-
-  console.log(window.innerWidth);
-
-  // const mobile = window.innerWidth < 500;
 
   return (
     <React.Fragment>
