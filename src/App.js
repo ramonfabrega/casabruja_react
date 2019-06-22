@@ -8,11 +8,14 @@ import { Grid } from 'semantic-ui-react';
 import './App.css';
 
 import Navbar from './components/layout/Navbar';
-import Dashboard from './components/dashboard/Dashboard';
+import Footer from './components/layout/Footer';
+
 import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import Register from './components/auth/Register';
+
 import Profile from './components/profile/Profile';
+import Dashboard from './components/dashboard/Dashboard';
 import Checkout from './components/product/Checkout';
 
 import { getProductData } from './components/store/actions/productActions';
@@ -39,6 +42,8 @@ const App = () => {
             <Route path='/logout' component={Logout} />
 
             <Route exact path='/res' component={ResponsiveLayout} />
+
+            <Footer />
           </Grid>
         </Router>
       </Provider>
