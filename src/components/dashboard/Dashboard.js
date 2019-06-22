@@ -3,7 +3,7 @@ import { Grid } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 import Product from '../product/Product';
-import Checkout from '../common/Checkout';
+import BuyNow from '../common/BuyNow';
 
 class Dashboard extends Component {
   render() {
@@ -11,7 +11,7 @@ class Dashboard extends Component {
       <React.Fragment>
         <Grid.Row centered>
           <Grid.Column computer={6} tablet={15} mobile={15} textAlign='right'>
-            <Checkout />
+            <BuyNow />
           </Grid.Column>
         </Grid.Row>
 
