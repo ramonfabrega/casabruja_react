@@ -5,24 +5,27 @@
 
 ### TODO:
 
-- `Login.js`
+- Move modal `Checkout.js` -> `ProductTable.js`
+- Refactor Redux
+
+* `Login.js`
   - Password Reset modal message
   - Validation
-- `Register.js`
+* `Register.js`
   - Validation
-- `Profile.js`
+* `Profile.js`
   - Validation
-- `Subscriptions.js`
-- `PurchaseHistory.js`
-- `Rewards.js`
-- Payment
-- Admin Panel
+* `Subscriptions.js`
+* `PurchaseHistory.js`
+* `Rewards.js`
+* Payment
+* Admin Panel
   - Item control
     - Adjust prices
     - Add items
     - Add images
   - QR code generation access
-- BG txid's
+* BG txid's
 
 ---
 

@@ -38,7 +38,7 @@ const BuyNow = ({ cart, products }) => {
   if (total > 0) {
     return (
       <Grid>
-        <Grid.Column computer={10} mobile={16} tablet={8}>
+        <Grid.Column computer={10} tablet={8} mobile={16}>
           <Button as='div' labelPosition='right' fluid>
             <Button as={Link} to='/checkout' animated positive fluid>
               <Button.Content visible>
@@ -54,9 +54,9 @@ const BuyNow = ({ cart, products }) => {
             </Label>
           </Button>
         </Grid.Column>
-        <Grid.Column computer={6} mobile={16} tablet={6}>
+        <Grid.Column computer={6} tablet={8} mobile={16}>
           <Button animated primary fluid onClick={() => console.log(cart)}>
-            <Button.Content visible>Subscribe</Button.Content>
+            <Button.Content visible>Make it Recurrent!</Button.Content>
             <Button.Content hidden>More Info...</Button.Content>
           </Button>
         </Grid.Column>

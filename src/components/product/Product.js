@@ -64,7 +64,7 @@ const Product = ({ product, cart, updateProduct }) => {
   };
 
   return (
-    <Card as={Segment} centered inverted>
+    <Card as={Segment} centered inverted style={{ marginRight: 10 }}>
       <Image src={product.image} wrapped size='tiny' centered />
       <Card.Content style={{ paddingRight: 5 }}>
         <Card.Header style={colors.header}>{product.name}</Card.Header>

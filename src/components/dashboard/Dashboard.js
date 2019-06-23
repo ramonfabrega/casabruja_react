@@ -10,7 +10,7 @@ class Dashboard extends Component {
     return (
       <React.Fragment>
         <Grid.Row centered>
-          <Grid.Column computer={6} tablet={15} mobile={15} textAlign='right'>
+          <Grid.Column computer={8} tablet={15} mobile={15} textAlign='right'>
             <BuyNow />
           </Grid.Column>
         </Grid.Row>
