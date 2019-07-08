@@ -14,15 +14,19 @@ import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import Register from './components/auth/Register';
 
-import Profile from './components/profile/Profile';
 import Dashboard from './components/dashboard/Dashboard';
+
+import Profile from './components/profile/Profile';
+import Shop from './components/shop/Shop';
 import Checkout from './components/payment/Checkout';
 
 import { getProductData } from './components/store/actions/productActions';
+import { getPackages } from './components/store/actions/packagesActions';
 
 import ResponsiveLayout from './components/common/ResponsiveLayout';
 
 store.dispatch(getProductData());
+store.dispatch(getPackages());
 
 const App = () => {
   return (
@@ -34,7 +38,8 @@ const App = () => {
               <Navbar />
             </Grid.Row>
             <PrivateRoute exact path='/' component={Dashboard} />
-            <PrivateRoute path='/profile' component={Profile} />
+            <PrivateRoute exact path='/shop' component={Shop} />
+            <PrivateRoute exact path='/profile' component={Profile} />
             <PrivateRoute exact path='/checkout' component={Checkout} />
 
             <Route path='/login' component={Login} />

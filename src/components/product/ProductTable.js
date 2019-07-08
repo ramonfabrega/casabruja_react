@@ -62,7 +62,7 @@ const ProductTable = ({ cart, products }) => {
     if (Object.keys(cart).length) {
       return (
         <React.Fragment>
-          <Header size='huge' inverted content='Order Review' />
+          <Header size='huge' inverted content='Your Cart' />
           <Table
             compact
             size='small'

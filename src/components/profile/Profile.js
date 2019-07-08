@@ -14,6 +14,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Geosuggest from 'react-geosuggest';
 import Map from '../common/Map';
 
+import Status from './Status';
+
 import { updateProfile } from '../store/actions/authActions';
 
 const google = window.google;
@@ -33,6 +35,7 @@ class Profile extends Component {
         name: ''
       },
       notes: '',
+      avatar: null,
       portalShow: false,
       showPopup: false
     };
@@ -95,7 +98,8 @@ class Profile extends Component {
   render() {
     return (
       <Grid.Row centered style={{ paddingTop: 0 }}>
-        <Grid.Column mobile={14} tablet={14} computer={10}>
+        <Status />
+        <Grid.Column mobile={14} tablet={14} computer={8}>
           <Segment inverted>
             <Header as='h1' textAlign='center'>
               Account Information
