@@ -22,6 +22,9 @@ const Packages = ({ profile, packages }) => {
     return (
       <Grid.Column computer={8} tablet={12} mobile={10}>
         <Segment inverted>
+          <Header as='h5' style={{ paddingBottom: 10 }} textAlign='center'>
+            Paquetes Disponibles
+          </Header>
           <Grid columns='equal' textAlign='center' stackable>
             {pkgs.map((p, i) => (
               <Grid.Column key={i} color={p.color}>
@@ -54,13 +57,7 @@ const Packages = ({ profile, packages }) => {
                   </Label>
                 </Grid.Row>
                 <Grid.Row style={{ paddingBottom: 15 }}>
-                  <Button
-                    size='tiny'
-                    inverted
-                    basic
-                    color='white'
-                    content='BUY'
-                  />
+                  <Button size='tiny' inverted basic content='BUY' />
                 </Grid.Row>
               </Grid.Column>
             ))}

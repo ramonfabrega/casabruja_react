@@ -2,11 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, Segment, Header, Image, Label } from 'semantic-ui-react';
 
+// import { QRCode } from 'react-qrcode-logo';
 import qrtest from '../../img/qrtest.png';
+// import qr from '../../img/qr.png';
 
 // const test = ['#ffa600', '#dd4b39', '#ee682d'];
 
-const Status = ({ profile, packages }) => {
+const Status = ({ profile, packages, uid }) => {
   if (profile.firstName && packages.length > 0) {
     const pkg = packages.find(p => p.name === profile.level);
 
@@ -21,6 +23,7 @@ const Status = ({ profile, packages }) => {
           <Grid>
             <Grid.Column computer={6} tablet={6} mobile={16}>
               <Image src={qrtest} size='small' centered />
+              {/* <QRCode value={uid} logoImage={qr} size={100} /> */}
             </Grid.Column>
             <Grid.Column computer={10} tablet={10} mobile={16}>
               <Grid.Row>
@@ -62,7 +65,8 @@ const Status = ({ profile, packages }) => {
 
 const mapStateToProps = state => ({
   profile: state.firebase.profile,
-  packages: state.packages
+  packages: state.packages,
+  uid: state.firebase.auth.uid
 });
 
 export default connect(mapStateToProps)(Status);
