@@ -38,7 +38,7 @@ class Register extends Component {
     return (
       <Grid.Row centered>
         <Grid.Column computer={6} tablet={10} mobile={15}>
-          <Form size='large' inverted>
+          <Form inverted>
             {/* <Segment stacked inverted> */}
             <Form.Group widths='equal'>
               <Form.Input

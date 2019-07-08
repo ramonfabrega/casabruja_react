@@ -30,9 +30,14 @@ export const login = credentials => (dispatch, getState, { getFirebase }) => {
     });
 };
 
-export const fbAuth = () => (dispatch, getState, { getFirebase }) => {
-  console.log('called');
+export const fbAuth = () => (
+  dispatch,
+  getState,
+  { getFirebase, getFirestore }
+) => {
   const firebase = getFirebase();
+  const firestore = getFirestore();
+
   let provider = new firebase.auth.FacebookAuthProvider();
   provider.addScope('user_birthday');
 
@@ -40,9 +45,33 @@ export const fbAuth = () => (dispatch, getState, { getFirebase }) => {
     .auth()
     .signInWithPopup(provider)
     .then(res => {
-      // const token = res.credential.accessToken;
-      // const { displayName, email, photoURL, uid } = res.user;
-      // console.log('fb_user_info', res.user);
+      console.log(res);
+      if (res.additionalUserInfo.isNewUser) {
+        const {
+          first_name: firstName,
+          last_name: lastName,
+          email,
+          birthday
+        } = res.additionalUserInfo.profile;
+
+        const newUser = {
+          firstName,
+          lastName,
+          email,
+          birthdate: new Date(birthday),
+          level: 'Invitado',
+          points: 0,
+          orders: []
+        };
+
+        return firestore
+          .collection('users')
+          .doc(res.user.uid)
+          .set(newUser)
+          .catch(err => {
+            dispatch({ type: LOGIN_ERROR, err });
+          });
+      }
       dispatch({
         type: LOGIN_SUCCESS
       });
@@ -97,7 +126,14 @@ export const register = newUser => (
       return firestore
         .collection('users')
         .doc(res.user.uid)
-        .set({ firstName, lastName, email })
+        .set({
+          firstName,
+          lastName,
+          email,
+          level: 'Invitado',
+          points: 0,
+          orders: []
+        })
         .then(() => dispatch({ type: REGISTER_SUCCESS }))
         .catch(err => dispatch({ type: REGISTER_ERROR, err }));
     })
@@ -111,7 +147,7 @@ export const updateProfile = (profile, uid) => (
 ) => {
   const firestore = getFirestore();
 
-  const { isEmpty, isLoaded, ...rest } = profile;
+  const { isEmpty, isLoaded, portalShow, showPopup, ...rest } = profile;
 
   firestore
     .collection('users')
