@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Form, Grid, Segment, Message } from 'semantic-ui-react';
+import { Form, Grid, Message } from 'semantic-ui-react';
 
 import { register } from '../store/actions/authActions';
 
@@ -48,7 +48,7 @@ class Register extends Component {
                 value={firstName}
                 onChange={this.handleChange}
                 iconPosition='left'
-                placeholder='First name'
+                placeholder='Nombre'
               />
               <Form.Input
                 fluid
@@ -57,17 +57,17 @@ class Register extends Component {
                 value={lastName}
                 onChange={this.handleChange}
                 iconPosition='left'
-                placeholder='Last Name'
+                placeholder='Apellido'
               />
             </Form.Group>
             <Form.Input
               fluid
-              icon='mail'
+              icon='at'
               name='email'
               value={email}
               onChange={this.handleChange}
               iconPosition='left'
-              placeholder='E-mail address'
+              placeholder='Correo electrónico'
             />
             <Form.Input
               fluid
@@ -76,7 +76,7 @@ class Register extends Component {
               value={password}
               onChange={this.handleChange}
               iconPosition='left'
-              placeholder='Password'
+              placeholder='Contraseña'
               type='password'
             />
             <Form.Input
@@ -87,7 +87,7 @@ class Register extends Component {
               error={this.state.password !== this.state.password2}
               onChange={this.handleChange}
               iconPosition='left'
-              placeholder='Retype password'
+              placeholder='Reescriba su contraseña'
               type='password'
             />
 
@@ -107,7 +107,7 @@ class Register extends Component {
               size='large'
               onClick={this.handleRegister}
             >
-              Register
+              Unete Ya!
             </Form.Button>
             {this.props.authError ? (
               <Message negative content={this.props.authError} />

@@ -43,8 +43,8 @@ class Login extends Component {
     this.setState({ showModal: false, showModalMessage: false });
 
   handleResetPassword = () => {
-    // this.props.resetPassword(this.state.resetEmail);
-    console.log(this.state.resetEmail);
+    this.props.resetPassword(this.state.resetEmail);
+    // console.log(this.state.resetEmail);
     this.setState({ showModalMessage: true });
   };
 
@@ -65,12 +65,12 @@ class Login extends Component {
             <Form.Input
               fluid
               inverted
-              icon='mail'
+              icon='at'
               name='email'
               value={email}
               onChange={this.handleChange}
               iconPosition='left'
-              placeholder='E-mail address'
+              placeholder='Correo electrónico'
             />
             <Form.Input
               fluid
@@ -80,7 +80,7 @@ class Login extends Component {
               value={password}
               onChange={this.handleChange}
               iconPosition='left'
-              placeholder='Password'
+              placeholder='Contraseña'
               type='password'
             />
 
@@ -102,7 +102,7 @@ class Login extends Component {
               <Grid.Row columns='equal'>
                 <Grid.Column>
                   <Button size='tiny' as={Link} to='/register' primary fluid>
-                    Register
+                    Crea una cuenta
                   </Button>
                 </Grid.Column>
                 <Grid.Column>
@@ -115,7 +115,7 @@ class Login extends Component {
                         size='tiny'
                         onClick={() => this.setState({ showModal: true })}
                       >
-                        Forgot your password?
+                        Resetéa tu contraseña...
                       </Button>
                     }
                     size='mini'
@@ -169,7 +169,7 @@ class Login extends Component {
                     color='facebook'
                     icon='facebook'
                     onClick={this.handleFacebook}
-                    content='Login with Facebook'
+                    content='Conéctate con Facebook'
                   />
                   <Button
                     style={{ marginTop: 5 }}
@@ -177,7 +177,7 @@ class Login extends Component {
                     color='google plus'
                     icon='google plus'
                     onClick={this.handleGoogle}
-                    content='Login with Google'
+                    content='Conéctate con Google'
                   />
                 </Grid.Column>
               </Grid.Row>
