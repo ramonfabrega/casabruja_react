@@ -60,7 +60,7 @@ export const fbAuth = () => (
           email,
           birthdate: new Date(birthday),
           level: 'Invitado',
-          points: 0,
+          brewPoints: 0,
           orders: []
         };
 
@@ -131,7 +131,7 @@ export const register = newUser => (
           lastName,
           email,
           level: 'Invitado',
-          points: 0,
+          brewPoints: 0,
           orders: []
         })
         .then(() => dispatch({ type: REGISTER_SUCCESS }))
