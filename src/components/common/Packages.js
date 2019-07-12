@@ -10,60 +10,68 @@ import {
   Button
 } from 'semantic-ui-react';
 
-import { formatBeers } from '../common/tools';
+import { formatBeers } from './tools';
 
-const Packages = ({ profile, packages }) => {
+import { setUserPackage } from '../store/actions/packagesActions';
+
+const Packages = ({ packages, profile, setUserPackage, filter, title }) => {
   if (profile.firstName && packages.length > 0) {
-    console.log(packages);
-    const pkg = packages.find(p => p.name === profile.level);
-    const pkgs = packages.filter(p => p.enabled);
-    console.log(pkgs, pkg);
+    // const pkgs = packages.filter(p => p.enabled && p.name !== profile.level);
+    const pkgs = packages.filter(filter);
 
     return (
-      <Grid.Column computer={8} tablet={12} mobile={10}>
-        <Segment inverted>
-          <Header as='h5' style={{ paddingBottom: 10 }} textAlign='center'>
-            Paquetes Disponibles
-          </Header>
-          <Grid columns='equal' textAlign='center' stackable>
-            {pkgs.map((p, i) => (
-              <Grid.Column key={i} color={p.color}>
-                <Grid.Row style={{ paddingTop: 15 }}>
-                  <Header sub inverted>
-                    {p.name.toUpperCase()}
-                  </Header>
-                </Grid.Row>
-                <Grid.Row style={{ paddingTop: 30 }}>
-                  <Statistic value={`$${p.price}`} inverted color={p.color} />
-                </Grid.Row>
-                <Grid.Row style={{ paddingTop: 30 }}>
-                  <Label
-                    size='small'
-                    style={{
-                      backgroundColor: '#dd4b39',
-                      color: 'white',
-                      marginBottom: 5
-                    }}
-                  >
-                    {`${formatBeers(p.amount)} de cerveza`}
-                  </Label>
-                </Grid.Row>
-                <Grid.Row style={{ paddingBottom: 30 }}>
-                  <Label
-                    size='small'
-                    style={{ backgroundColor: '#dd4b39', color: 'white' }}
-                  >
-                    {`${p.brewPoints} Puntos Brujos`}
-                  </Label>
-                </Grid.Row>
-                <Grid.Row style={{ paddingBottom: 15 }}>
-                  <Button size='tiny' inverted basic content='BUY' />
-                </Grid.Row>
-              </Grid.Column>
-            ))}
-          </Grid>
-        </Segment>
-      </Grid.Column>
+      <Segment inverted>
+        <Header as='h5' style={{ paddingBottom: 10 }} textAlign='center'>
+          {/* Subscribete a nuestro club y recibe cervezas cada mes o semana */}
+          {title}
+        </Header>
+        <Grid columns='equal' textAlign='center' stackable>
+          {pkgs.map((p, i) => (
+            <Grid.Column key={i} color={p.color}>
+              <Grid.Row style={{ paddingTop: 15 }}>
+                <Header sub inverted>
+                  {p.name.toUpperCase()}
+                </Header>
+              </Grid.Row>
+              <Grid.Row style={{ paddingTop: 30 }}>
+                <Statistic value={`$${p.price}`} inverted color={p.color} />
+              </Grid.Row>
+              <Grid.Row style={{ paddingTop: 30 }}>
+                {/* <Label
+                  size='small'
+                  style={{
+                    backgroundColor: '#dd4b39',
+                    color: 'white',
+                    marginBottom: 5
+                  }}
+                >
+                  {`${formatBeers(p.amount)} de cerveza`}
+                </Label> */}
+                <p style={{ marginBottom: 5 }}>{`${formatBeers(
+                  p.amount
+                )} de cerveza`}</p>
+              </Grid.Row>
+              <Grid.Row style={{ paddingBottom: 30 }}>
+                <Label
+                  size='small'
+                  style={{ backgroundColor: '#dd4b39', color: 'white' }}
+                >
+                  {`${p.brewPoints} Puntos Brujos`}
+                </Label>
+              </Grid.Row>
+              <Grid.Row style={{ paddingBottom: 15 }}>
+                <Button
+                  size='tiny'
+                  inverted
+                  basic
+                  content='BUY'
+                  onClick={() => setUserPackage(p)}
+                />
+              </Grid.Row>
+            </Grid.Column>
+          ))}
+        </Grid>
+      </Segment>
     );
   } else {
     return <React.Fragment />;
@@ -75,4 +83,7 @@ const mapStateToProps = state => ({
   packages: state.packages
 });
 
-export default connect(mapStateToProps)(Packages);
+export default connect(
+  mapStateToProps,
+  { setUserPackage }
+)(Packages);

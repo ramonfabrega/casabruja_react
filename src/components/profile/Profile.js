@@ -96,8 +96,15 @@ class Profile extends Component {
 
   render() {
     return (
-      <Grid.Row centered style={{ paddingTop: 0 }}>
-        <Status />
+      <Grid.Row centered>
+        <Grid.Column
+          computer={6}
+          tablet={8}
+          mobile={16}
+          style={{ paddingBottom: 25 }}
+        >
+          <Status />
+        </Grid.Column>
         <Grid.Column mobile={14} tablet={14} computer={8}>
           <Segment inverted>
             <Header as='h2' textAlign='center'>
