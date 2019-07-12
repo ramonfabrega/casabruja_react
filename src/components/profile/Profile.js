@@ -13,6 +13,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Geosuggest from 'react-geosuggest';
 import Map from '../common/Map';
+import InputMask from 'react-input-mask';
 
 import Status from './Status';
 
@@ -59,6 +60,8 @@ class Profile extends Component {
 
   handlePortal = () => this.setState({ portalShow: !this.state.portalShow });
 
+  handlePhone = e => this.setState({ [e.target.name]: e.target.value });
+
   handlePopupOpen = () => {
     this.setState({ showPopup: true });
 
@@ -73,15 +76,11 @@ class Profile extends Component {
   };
 
   onSuggestSelect = place => {
-    const temp = {
-      coordinates: place.location,
-      name: place.description
-    };
-
-    if (place)
+    if (place) {
       this.setState({
-        address: temp
+        address: { coordinates: place.location, name: place.description }
       });
+    }
   };
 
   updateProfile = () => {
@@ -101,11 +100,11 @@ class Profile extends Component {
         <Status />
         <Grid.Column mobile={14} tablet={14} computer={8}>
           <Segment inverted>
-            <Header as='h1' textAlign='center'>
-              Account Information
+            <Header as='h2' textAlign='center'>
+              Actualiza tu Cuenta
             </Header>
             <Popup
-              trigger={<Button positive fluid content='Save Changes' />}
+              trigger={<Button positive fluid content='Guardar Cambios' />}
               content={'Profile updated'}
               on='click'
               open={this.state.showPopup}
@@ -124,8 +123,8 @@ class Profile extends Component {
                   value={this.state.firstName}
                   onChange={this.handleChange}
                   iconPosition='left'
-                  placeholder='First name'
-                  label='First name'
+                  placeholder='Nombre'
+                  label='Nombre'
                 />
                 <Form.Input
                   icon='user'
@@ -133,8 +132,8 @@ class Profile extends Component {
                   value={this.state.lastName}
                   onChange={this.handleChange}
                   iconPosition='left'
-                  placeholder='Last Name'
-                  label='Last name'
+                  placeholder='Apellido'
+                  label='Apellido'
                 />
               </Form.Group>
               <Form.Input
@@ -143,21 +142,39 @@ class Profile extends Component {
                 value={this.state.email}
                 onChange={this.handleChange}
                 iconPosition='left'
-                placeholder='Email'
-                label='Email'
+                placeholder='Correo electrónico'
+                label='Correo electrónico'
               />
               <Form.Group widths='equal'>
-                <Form.Input
+                {/* <Form.Input
                   icon='phone'
                   name='phone'
                   value={this.state.phone}
                   onChange={this.handleChange}
                   iconPosition='left'
-                  placeholder='Phone'
-                  label='Phone'
-                />
+                  placeholder='69831560'
+                  label='Teléfono'
+                /> */}
+                <InputMask
+                  mask='+507    9999-9999'
+                  value={this.state.phone}
+                  onChange={this.handlePhone}
+                  alwaysShowMask={false}
+                  maskChar=''
+                >
+                  {inProps => (
+                    <Form.Input
+                      {...inProps}
+                      icon='phone'
+                      name='phone'
+                      iconPosition='left'
+                      label='Teléfono'
+                      placeholder=''
+                    />
+                  )}
+                </InputMask>
                 <Form.Field style={{ width: '100%' }}>
-                  <label>Date of Birth</label>
+                  <label>Fecha de Nacimiento</label>
                   <DatePicker
                     openToDate={new Date('1996/06/10')}
                     dateFormat='dd/MM/yyyy'
@@ -171,7 +188,7 @@ class Profile extends Component {
               </Form.Group>
               <Form.Group widths='equal'>
                 <Form.Field>
-                  <label>Address</label>
+                  <label>Dirección</label>
                   <Geosuggest
                     location={new google.maps.LatLng(9.012007, -79.478704)}
                     radius={50}
@@ -182,8 +199,10 @@ class Profile extends Component {
                     name='notes'
                     value={this.state.notes}
                     onChange={this.handleChange}
-                    placeholder=''
-                    label='Delivery Notes'
+                    placeholder={
+                      'Direcciones adicionales\nNumero de apartamento\nNotas del delivery'
+                    }
+                    label='Informacion adicional'
                   />
                 </Form.Field>
                 {this.state.address.coordinates !== '' && (

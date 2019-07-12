@@ -8,10 +8,9 @@ import qrtest from '../../img/qrtest.png';
 
 // const test = ['#ffa600', '#dd4b39', '#ee682d'];
 
-const Status = ({ profile, packages, uid }) => {
+const Status = ({ profile, packages }) => {
   if (profile.firstName && packages.length > 0) {
     const pkg = packages.find(p => p.name === profile.level);
-
     return (
       <Grid.Column
         computer={5}
@@ -41,7 +40,7 @@ const Status = ({ profile, packages, uid }) => {
                   size='medium'
                   style={{ backgroundColor: '#dd4b39', color: 'white' }}
                 >
-                  {`${profile.points} Puntos Brujos`}
+                  {`${profile.brewPoints} Puntos Brujos`}
                 </Label>
               </Grid.Row>
               <Grid.Row style={{ paddingTop: 10 }}>
@@ -65,8 +64,7 @@ const Status = ({ profile, packages, uid }) => {
 
 const mapStateToProps = state => ({
   profile: state.firebase.profile,
-  packages: state.packages,
-  uid: state.firebase.auth.uid
+  packages: state.packages
 });
 
 export default connect(mapStateToProps)(Status);

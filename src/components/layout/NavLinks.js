@@ -5,11 +5,11 @@ import { Menu, Icon } from 'semantic-ui-react';
 const links = {
   loggedIn: [
     { name: 'home', label: 'Home', link: '/' },
-    { name: 'cart', label: 'Checkout', link: '/checkout' },
-    { name: 'clipboard', label: 'Subscriptions', link: '/subscriptions' },
-    { name: 'list', label: 'Purchase History', link: '/history' },
-    { name: 'star', label: 'Rewards', link: '/rewards' },
-    { name: 'user', label: 'Account', link: '/profile' },
+    // { name: 'cart', label: 'Checkout', link: '/checkout' },
+    // { name: 'clipboard', label: 'Subscriptions', link: '/subscriptions' },
+    // { name: 'list', label: 'Purchase History', link: '/history' },
+    // { name: 'star', label: 'Rewards', link: '/rewards' },
+    { name: 'user', label: 'Profile', link: '/profile' },
     { name: 'log out', label: 'Logout', link: '/logout' }
   ],
   loggedOut: [
