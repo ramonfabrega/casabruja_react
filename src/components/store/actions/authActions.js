@@ -61,7 +61,8 @@ export const fbAuth = () => (
           birthdate: new Date(birthday),
           level: 'Invitado',
           brewPoints: 0,
-          orders: []
+          order: null,
+          orderHistory: []
         };
 
         return firestore
@@ -132,7 +133,8 @@ export const register = newUser => (
           email,
           level: 'Invitado',
           brewPoints: 0,
-          orders: []
+          order: null,
+          orderHistory: []
         })
         .then(() => dispatch({ type: REGISTER_SUCCESS }))
         .catch(err => dispatch({ type: REGISTER_ERROR, err }));
