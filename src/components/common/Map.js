@@ -17,6 +17,7 @@ class Map extends Component {
           lng: this.props.location.lng
         }}
         defaultZoom={15}
+        options={{ streetViewControl: false, gestureHandling: 'none' }}
       >
         <Marker position={this.props.location} />
       </GoogleMap>
