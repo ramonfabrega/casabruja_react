@@ -16,3 +16,4 @@ export const GET_IMAGE = 'GET_IMAGE';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 
 export const GET_PACKAGES = 'GET_PACKAGES';
+export const SET_USER_PACKAGE = 'SET_USER_PACKAGE';
