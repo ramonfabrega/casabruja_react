@@ -126,6 +126,7 @@ class Profile extends Component {
                 <Form.Input
                   icon='user'
                   name='firstName'
+                  spellCheck='false'
                   value={this.state.firstName}
                   onChange={this.handleChange}
                   iconPosition='left'
@@ -135,6 +136,7 @@ class Profile extends Component {
                 <Form.Input
                   icon='user'
                   name='lastName'
+                  spellCheck='false'
                   value={this.state.lastName}
                   onChange={this.handleChange}
                   iconPosition='left'
@@ -146,21 +148,14 @@ class Profile extends Component {
                 icon='at'
                 name='email'
                 value={this.state.email}
+                autoCapitalize='off'
+                type='email'
                 onChange={this.handleChange}
                 iconPosition='left'
                 placeholder='Correo electrónico'
                 label='Correo electrónico'
               />
               <Form.Group widths='equal'>
-                {/* <Form.Input
-                  icon='phone'
-                  name='phone'
-                  value={this.state.phone}
-                  onChange={this.handleChange}
-                  iconPosition='left'
-                  placeholder='69831560'
-                  label='Teléfono'
-                /> */}
                 <InputMask
                   mask='+507    9999-9999'
                   value={this.state.phone}
@@ -176,9 +171,23 @@ class Profile extends Component {
                       iconPosition='left'
                       label='Teléfono'
                       placeholder=''
+                      type='tel'
                     />
                   )}
                 </InputMask>
+                {/* <Form.Input
+                  icon='calendar'
+                  name='birthdate'
+                  //value={this.state.birthdate}
+                  value='10/06/96'
+                  autoCapitalize='off'
+                  type='date'
+                  onChange={this.handleChange}
+                  iconPosition='left'
+                  placeholder='dd/mm/yy'
+                  label='Fecha de Nacimiento'
+                /> */}
+
                 <Form.Field style={{ width: '100%' }}>
                   <label>Fecha de Nacimiento</label>
                   <DatePicker
