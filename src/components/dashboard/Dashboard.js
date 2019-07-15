@@ -1,28 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Grid, Message } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 
 import Status from '../profile/Status';
 import Packages from '../common/Packages';
 
+import Messages from '../common/Messages';
+import { messages } from '../common/Constants';
+
 const Dashboard = () => {
-  const [hideMessage, setHideMessage] = useState(false);
   return (
     <Grid.Row centered>
       <Grid.Column
         computer={6}
         tablet={8}
-        mobile={16}
+        mobile={12}
         style={{ paddingBottom: 25 }}
       >
         <Status />
-        <Message
-          onDismiss={() => setHideMessage(true)}
-          hidden={hideMessage}
-          color='black'
-          header='Canjea tus Puntos Brujos!'
-          content='Recibe una cerveza gratis en el taproom por 100 Puntos Brujos. '
-        />
+        <Messages messages={messages.dashboard} />
       </Grid.Column>
       <Grid.Column computer={8} tablet={12} mobile={12}>
         <Packages
