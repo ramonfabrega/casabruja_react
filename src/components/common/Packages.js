@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import {
   Grid,
@@ -12,19 +13,23 @@ import {
 
 import { formatBeers } from './tools';
 
-import { setUserPackage } from '../store/actions/packagesActions';
+import {
+  setUserPackage,
+  setLocalPackage
+} from '../store/actions/packagesActions';
 
-const Packages = ({ packages, profile, setUserPackage, filter, title }) => {
+const Packages = ({ packages, profile, setLocalPackage, filter, title }) => {
   if (profile.firstName && packages.length > 0) {
     // const pkgs = packages.filter(p => p.enabled && p.name !== profile.level);
     const pkgs = packages.filter(filter);
 
     return (
       <Segment inverted>
-        <Header as='h5' style={{ paddingBottom: 10 }} textAlign='center'>
-          {/* Subscribete a nuestro club y recibe cervezas cada mes o semana */}
-          {title}
-        </Header>
+        {title && (
+          <Header as='h5' style={{ paddingBottom: 10 }} textAlign='center'>
+            {title}
+          </Header>
+        )}
         <Grid columns='equal' textAlign='center' stackable>
           {pkgs.map((p, i) => (
             <Grid.Column key={i} color={p.color}>
@@ -61,11 +66,13 @@ const Packages = ({ packages, profile, setUserPackage, filter, title }) => {
               </Grid.Row>
               <Grid.Row style={{ paddingBottom: 15 }}>
                 <Button
+                  as={Link}
+                  to='/subscribe'
                   size='tiny'
                   inverted
                   basic
                   content='BUY'
-                  onClick={() => setUserPackage(p)}
+                  onClick={() => setLocalPackage(p.name)}
                 />
               </Grid.Row>
             </Grid.Column>
@@ -80,10 +87,10 @@ const Packages = ({ packages, profile, setUserPackage, filter, title }) => {
 
 const mapStateToProps = state => ({
   profile: state.firebase.profile,
-  packages: state.packages
+  packages: state.packages.data
 });
 
 export default connect(
   mapStateToProps,
-  { setUserPackage }
+  { setUserPackage, setLocalPackage }
 )(Packages);
