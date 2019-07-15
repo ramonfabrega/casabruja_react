@@ -17,6 +17,7 @@ import Register from './components/auth/Register';
 import Dashboard from './components/dashboard/Dashboard';
 
 import Profile from './components/profile/Profile';
+import Sub from './components/payment/Sub';
 import Shop from './components/shop/Shop';
 import Checkout from './components/payment/Checkout';
 
@@ -38,14 +39,15 @@ const App = () => {
               <Navbar />
             </Grid.Row>
             <PrivateRoute exact path='/' component={Dashboard} />
-            <PrivateRoute exact path='/shop' component={Shop} />
+            <PrivateRoute exact path='/subscribe' component={Sub} />
             <PrivateRoute exact path='/profile' component={Profile} />
-            <PrivateRoute exact path='/checkout' component={Checkout} />
 
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
             <Route path='/logout' component={Logout} />
 
+            <PrivateRoute exact path='/shop' component={Shop} />
+            <PrivateRoute exact path='/checkout' component={Checkout} />
             <Route exact path='/res' component={ResponsiveLayout} />
 
             <Footer />
