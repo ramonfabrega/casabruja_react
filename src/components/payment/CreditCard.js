@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PaymentInputsWrapper, usePaymentInputs } from 'react-payment-inputs';
 import images from 'react-payment-inputs/lib/images';
-import InputMask from 'react-input-mask';
+// import InputMask from 'react-input-mask';
 
 const ERROR_MESSAGES = {
   emptyCardNumber: 'El número de la tarjeta es inválido',
