@@ -55,7 +55,7 @@ const Navbar = ({ auth }) => {
           mobile={16}
           style={{ marginTop: 10 }}
         >
-          <Image src={light_header_clean} />
+          <Image as={Link} to='/' src={light_header_clean} />
         </Grid.Column>
       )}
     </React.Fragment>
