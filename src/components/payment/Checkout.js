@@ -27,7 +27,7 @@ const Checkout = () => {
         <ProductTable />
       </Grid.Column>
       <Grid.Column
-        computer={8}
+        computer={5}
         tablet={8}
         mobile={16}
         style={{ paddingLeft: '5vh', paddingRight: '5vh' }}
