@@ -14,13 +14,13 @@ const Dashboard = () => {
       <Grid.Column
         computer={6}
         tablet={8}
-        mobile={12}
+        mobile={15}
         style={{ paddingBottom: 25 }}
       >
         <Status />
         <Messages messages={messages.dashboard} />
       </Grid.Column>
-      <Grid.Column computer={8} tablet={12} mobile={12}>
+      <Grid.Column computer={8} tablet={12} mobile={14}>
         <Packages
           title='Subscribete a nuestro club y recibe cervezas cada mes o semana'
           filter={p => p.enabled}
