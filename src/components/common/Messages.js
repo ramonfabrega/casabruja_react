@@ -4,8 +4,9 @@ import { Message } from 'semantic-ui-react';
 export default ({ messages }) => {
   const [hideMessage, setHideMessage] = useState(false);
 
-  return messages.map(msg => (
+  return messages.map((msg, i) => (
     <Message
+      key={i}
       onDismiss={() => setHideMessage(true)}
       hidden={hideMessage}
       color={msg.color}
