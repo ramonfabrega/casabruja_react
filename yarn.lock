@@ -10763,10 +10763,10 @@ react-onclickoutside@^6.7.1:
   resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.8.0.tgz#9f91b5b3ed59f4d9e43fd71620dc200773a4d569"
   integrity sha512-5Q4Rn7QLEoh7WIe66KFvYIpWJ49GeHoygP1/EtJyZjXKgrWH19Tf0Ty3lWyQzrEEDyLOwUvvmBFSE3dcDdvagA==
 
-react-payment-inputs@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-payment-inputs/-/react-payment-inputs-1.0.2.tgz#878bd617828f1f3754f79c5eb29523e4b6b03213"
-  integrity sha512-thgv0KFqdtqQZDU02Ug45cyxGqIVMkvK6p33Dt2HIEgvo6M3K4jEaV79pK0rdZjTdNdMh5UfuCZZBkqHX52PjA==
+react-payment-inputs@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-payment-inputs/-/react-payment-inputs-1.0.3.tgz#71272d1b906850d9f767c9527a33cb0f4bb671a0"
+  integrity sha512-KOQl5bIUkI+gAobGX6zRRZQU6vqNwGcV6v19UO6wnPdxhgUdM4AhN9Acuj0QKLKCbMr2QKDQhxYZPJRS1N4BQg==
 
 react-popper@^1.0.2, react-popper@^1.3.3:
   version "1.3.3"
