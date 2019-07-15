@@ -66,6 +66,7 @@ class Register extends Component {
               name='email'
               value={email}
               onChange={this.handleChange}
+              autoCapitalize='off'
               iconPosition='left'
               placeholder='Correo electrónico'
             />

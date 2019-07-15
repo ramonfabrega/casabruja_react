@@ -67,6 +67,7 @@ class Login extends Component {
               inverted
               icon='at'
               name='email'
+              autoCapitalize='off'
               value={email}
               onChange={this.handleChange}
               iconPosition='left'
