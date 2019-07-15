@@ -80,7 +80,7 @@ const Status = ({ profile, packages }) => {
 
 const mapStateToProps = state => ({
   profile: state.firebase.profile,
-  packages: state.packages
+  packages: state.packages.data
 });
 
 export default connect(mapStateToProps)(Status);
