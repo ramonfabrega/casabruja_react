@@ -61,6 +61,7 @@ export const fbAuth = () => (
           birthdate: new Date(birthday),
           level: 'Invitado',
           brewPoints: 0,
+          beerPreferences: [],
           order: null,
           orderHistory: []
         };
@@ -133,6 +134,7 @@ export const register = newUser => (
           email,
           level: 'Invitado',
           brewPoints: 0,
+          beerPreferences: [],
           order: null,
           orderHistory: []
         })
