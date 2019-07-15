@@ -68,6 +68,8 @@ class Login extends Component {
               icon='at'
               name='email'
               autoCapitalize='off'
+              spellcheck='false'
+              type='email'
               value={email}
               onChange={this.handleChange}
               iconPosition='left'
@@ -79,6 +81,7 @@ class Login extends Component {
               icon='lock'
               name='password'
               value={password}
+              spellcheck='false'
               onChange={this.handleChange}
               iconPosition='left'
               placeholder='Contraseña'

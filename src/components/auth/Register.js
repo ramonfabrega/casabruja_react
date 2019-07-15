@@ -45,6 +45,7 @@ class Register extends Component {
                 fluid
                 icon='user'
                 name='firstName'
+                spellcheck='false'
                 value={firstName}
                 onChange={this.handleChange}
                 iconPosition='left'
@@ -54,6 +55,7 @@ class Register extends Component {
                 fluid
                 icon='user'
                 name='lastName'
+                spellcheck='false'
                 value={lastName}
                 onChange={this.handleChange}
                 iconPosition='left'
@@ -65,6 +67,7 @@ class Register extends Component {
               icon='at'
               name='email'
               value={email}
+              spellcheck='false'
               onChange={this.handleChange}
               autoCapitalize='off'
               iconPosition='left'
@@ -75,6 +78,7 @@ class Register extends Component {
               icon='lock'
               name='password'
               value={password}
+              spellcheck='false'
               onChange={this.handleChange}
               iconPosition='left'
               placeholder='Contraseña'
@@ -85,6 +89,7 @@ class Register extends Component {
               icon='unlock'
               name='password2'
               value={password2}
+              spellcheck='false'
               error={this.state.password !== this.state.password2}
               onChange={this.handleChange}
               iconPosition='left'
