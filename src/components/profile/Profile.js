@@ -84,7 +84,6 @@ class Profile extends Component {
   };
 
   updateProfile = () => {
-    // this.validateProfile();
     this.props.updateProfile(this.state, this.props.uid);
     this.handlePopupOpen();
   };
@@ -144,7 +143,7 @@ class Profile extends Component {
                 />
               </Form.Group>
               <Form.Input
-                icon='mail'
+                icon='at'
                 name='email'
                 value={this.state.email}
                 onChange={this.handleChange}
@@ -167,7 +166,7 @@ class Profile extends Component {
                   value={this.state.phone}
                   onChange={this.handlePhone}
                   alwaysShowMask={false}
-                  maskChar=''
+                  maskChar={null}
                 >
                   {inProps => (
                     <Form.Input
