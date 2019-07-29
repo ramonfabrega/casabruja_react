@@ -4,7 +4,8 @@ import {
   SET_USER_PACKAGE,
   SET_LOCAL_PACKAGE,
   SET_BEER_PREFERENCES,
-  LOAD_BEER_PREFERENCES
+  LOAD_BEER_PREFERENCES,
+  SAVE_BEER_PREFERENCES
 } from '../actions/types';
 
 const initialState = {
@@ -47,6 +48,9 @@ export default (state = initialState, action) => {
         ...state,
         beerPreferences: action.payload
       };
+
+    case SAVE_BEER_PREFERENCES:
+      return state;
 
     default:
       return state;

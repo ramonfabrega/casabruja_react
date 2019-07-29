@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { setLocalPackage } from '../store/actions/packagesActions';
+import {
+  setLocalPackage,
+  saveBeerPreferences
+} from '../store/actions/packagesActions';
 
 import { formatBeers } from '../common/tools';
 
@@ -14,7 +17,8 @@ import {
   Button,
   Label,
   Header,
-  Icon
+  Icon,
+  Segment
 } from 'semantic-ui-react';
 
 export class Sub extends Component {
@@ -25,12 +29,7 @@ export class Sub extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (!state.isLoaded) {
-      return {
-        beers: props.beerPreferences
-      };
-    }
-    return null;
+    return { beers: props.beerPreferences };
   }
 
   updateBeer = (value, i) => {
@@ -54,8 +53,12 @@ export class Sub extends Component {
 
   render() {
     const { packages, selectedPackage, beerPreferences, products } = this.props;
+    let buttonEnabled = true;
 
     if (packages.length > 0 && beerPreferences && products) {
+      this.state.beers.forEach(b => (buttonEnabled = buttonEnabled && b));
+      if (this.state.beers.length === 0) buttonEnabled = false;
+
       const pkg = packages.find(p => p.name === selectedPackage);
       const packagesOptions = packages
         .filter(p => p.enabled)
@@ -90,7 +93,7 @@ export class Sub extends Component {
               mobile={14}
               color={pkg.color}
               textAlign='center'
-              style={{ paddingBottom: 30 }}
+              style={{ paddingBottom: 25 }}
             >
               <Grid.Row>
                 <Button.Group basic inverted>
@@ -115,7 +118,7 @@ export class Sub extends Component {
                   pkg.amount
                 )} de cerveza`}</p>
               </Grid.Row>
-              <Grid.Row style={{ paddingBottom: 5 }}>
+              <Grid.Row style={{ paddingBottom: 30 }}>
                 <Label
                   size='small'
                   style={{ backgroundColor: '#dd4b39', color: 'white' }}
@@ -163,6 +166,32 @@ export class Sub extends Component {
                   />
                 </Grid.Row>
               )}
+              <Grid.Row style={{ position: 'absolute', bottom: 15, right: 15 }}>
+                <Button
+                  content='Guardar'
+                  disabled={!buttonEnabled}
+                  size='tiny'
+                  icon='check'
+                  onClick={() =>
+                    this.props.saveBeerPreferences(this.state.beers)
+                  }
+                  color='green'
+                />
+              </Grid.Row>
+            </Grid.Column>
+            <Grid.Column
+              computer={6}
+              style={{ border: 'solid 1px black', opacity: 0.3 }}
+              color='black'
+            >
+              <Grid.Row style={{ marginTop: 10, marginBottom: 25 }}>
+                <Header as='h4' inverted>
+                  Paga con tarjeta de credito:
+                </Header>
+              </Grid.Row>
+              <Grid.Row>
+                <Button content='test' />
+              </Grid.Row>
             </Grid.Column>
           </Grid.Row>
         </React.Fragment>
@@ -182,5 +211,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setLocalPackage }
+  { setLocalPackage, saveBeerPreferences }
 )(Sub);

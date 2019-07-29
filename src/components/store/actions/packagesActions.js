@@ -3,7 +3,8 @@ import {
   FIREBASE_ERROR,
   SET_USER_PACKAGE,
   SET_LOCAL_PACKAGE,
-  SET_BEER_PREFERENCES
+  SET_BEER_PREFERENCES,
+  SAVE_BEER_PREFERENCES
 } from './types';
 
 export const getPackages = () => (dispatch, getState, { getFirestore }) => {
@@ -71,5 +72,21 @@ export const loadBeerPreferences = () => (
         dispatch({ type: SET_BEER_PREFERENCES, payload });
       }
     })
+    .catch(err => dispatch({ type: FIREBASE_ERROR, err }));
+};
+
+export const saveBeerPreferences = beerPreferences => (
+  dispatch,
+  getState,
+  { getFirestore }
+) => {
+  const firestore = getFirestore();
+  const state = getState();
+
+  firestore
+    .collection('users')
+    .doc(state.firebase.auth.uid)
+    .update({ beerPreferences })
+    .then(() => dispatch({ SET_BEER_PREFERENCES }))
     .catch(err => dispatch({ type: FIREBASE_ERROR, err }));
 };

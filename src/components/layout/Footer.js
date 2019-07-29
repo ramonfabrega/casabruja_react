@@ -3,7 +3,7 @@ import { Grid, Header } from 'semantic-ui-react';
 
 const Footer = () => {
   return (
-    <Grid.Row>
+    <Grid.Row style={{ marginTop: 50 }}>
       <Grid.Column floated='right' textAlign='right'>
         <Header
           as='a'
